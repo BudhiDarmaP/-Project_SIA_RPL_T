@@ -1,0 +1,20 @@
+body{
+    background-color: aquamarine;
+}
+
+.header {
+    position: center;
+    width:950;
+    height:500;
+    margin-left: 170px;
+    margin-top: 5px;
+    border: 2px solid #F90;
+    }
+    
+    .p1{
+        text-align:center;
+        margin-top: 20px;
+        font-family:helvetica;
+        font-size: 24;
+
+    }
