@@ -1,0 +1,66 @@
+body {
+    background-color: white;
+}
+
+#header {
+    position: relative;
+    margin-left: 8.5%;
+    margin-right: 8.5%;
+    height:20%;
+    text-align:left;
+    background-color: aquamarine;
+    border: 2px solid black;
+}
+
+#form {
+    text-align:center;
+    margin-top: 10px;
+    background-color: aliceblue;
+/*    font-family:helvetica;*/
+    text-align: center;
+    font-size: 24;
+    border-style: double;
+    border-radius: 5px;
+    height: 77%;
+    margin-left: 8.5%;
+    margin-right: 8.5%;
+}
+
+#form-find-nim-insert {
+    text-align:center;
+    background-color: white;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    border-style: solid;
+    border-radius: 5px;
+    margin-left: 35%;
+    margin-right: 35%;
+}
+
+#form-after-select-nim {
+    text-align:center;
+    margin-top: 10px;
+    background-color: aliceblue;
+/*    font-family:helvetica;*/
+    text-align: center;
+    font-size: 24;
+    border-style: double;
+    border-radius: 5px;
+    height: 77%;
+    margin-left: 8.5%;
+    margin-right: 8.5%;
+}
+
+#c1{
+    width: 8%;
+    height: 100%;
+    float: left;
+    background-color: aquamarine;
+}
+
+#c2{
+    width: 8%;
+    height: 100%;
+    float: right;
+    background-color: aquamarine;
+}
