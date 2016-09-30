@@ -13,6 +13,13 @@
                 <img src="assets/images/logo-SIA-300x241.png" style="width: auto;height: 100%">
             </a>
         </div>
+        <%! public void status(double akhir) {
+//                int semester;
+//                if (semester == 2) {
+//                    if(akhir>)
+//                }
+            }
+        %>
         <div id="form">
             <form action="NIS.jsp">
                 NIM :<br>

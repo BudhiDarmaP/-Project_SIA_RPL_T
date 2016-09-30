@@ -52,9 +52,15 @@
                 </table>
                 <input type="submit" value="Simpan">
             </form>
-            
-            <%! public double nilai_semester(double tugas, double harian, double uts, double uas){
-                return ((0.1*tugas)+(0.2*harian)+(0.3*uts)+(0.4*uas));}
+
+            <%! public double nilai_semester(double tugas, double harian, double uts, double uas) {
+                    return ((0.1 * tugas) + (0.2 * harian) + (0.3 * uts) + (0.4 * uas));
+                }
+            %>
+
+            <%! public double nilai_akhir(double akhir1, double akhir2) {
+                    return (akhir1 + akhir2) / 2;
+                }
             %>
 
             <% String jdbcURL = null;
@@ -70,7 +76,7 @@
                     conn = DriverManager.getConnection(jdbcURL, username, password);
                 } catch (Exception ex) {
                     ex.printStackTrace();
-                } %>
+                }%>
         </div>
     </body>
 </html>
