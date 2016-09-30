@@ -76,7 +76,9 @@
                     conn = DriverManager.getConnection(jdbcURL, username, password);
                 } catch (Exception ex) {
                     ex.printStackTrace();
-                }%>
+                }
+            //insert into nilai (nilai_tugas, nilai_harian, nilai_uts, nilai_uas, nilai_semester, status_kenaikan, nilai_akhir)
+//            value ()%>
         </div>
     </body>
 </html>
