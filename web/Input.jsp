@@ -16,13 +16,38 @@
         </div>
         <div id="form">
             <form action="NIS.jsp">
-                Nama : <input type="text" name="nama" value=""><br>
-                Kode : <input type="text" name="kode" value=""><br>
-                Semester : <input type="text" name="semester" value=""><br> 
-                Nilai Tugas : <input type="text" name="nilai_tugas" value=""><br>
-                Nilai Harian : <input type="text" name="nilai_harian" value=""><br>
-                Nilai UTS : <input type="text" name="nilai_uts" value=""><br>
-                Nilai UAS : <input type="text" name="nilai_uas" value=""><br>
+                <table border="0">
+                <tbody>
+                    <tr>
+                        <th>Nama</th>
+                        <td><input type="text" name="nama" value=""></td>
+                    </tr>
+                    <tr>
+                        <th>Kode</th>
+                        <td><input type="text" name="kode" value=""></td>
+                    </tr>
+                    <tr>
+                        <th>Semester</th>
+                        <td><input type="text" name="semester" value=""></td>
+                    </tr>
+                    <tr>
+                        <th>Nilai Tugas</th>
+                        <td><input type="text" name="nilai_tugas" value=""></td>
+                    </tr>
+                    <tr>
+                        <th>Nilai Harian</th>
+                        <td><input type="text" name="nilai_harian" value=""></td>
+                    </tr>
+                    <tr>
+                        <th>Nilai UTS</th>
+                        <td><input type="text" name="nilai_uts" value=""></td>
+                    </tr>
+                    <tr>
+                        <th>Nilai UAS</th>
+                        <td><input type="text" name="nilai_uas" value=""></td>
+                    </tr>
+                </tbody>
+            </table>
             <input type="submit" value="Simpan">
             </form>
             
