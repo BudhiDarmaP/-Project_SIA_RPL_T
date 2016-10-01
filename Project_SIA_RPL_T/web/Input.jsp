@@ -17,41 +17,151 @@
             </a>
         </div>
         <div id="form">
-            <form action="NIS.jsp">
-                <table border="0">
-                    <tbody>
+            <div id="form-insert-score">
+                <form action="NIS.jsp">
+                    <table style="text-align: left; ">
                         <tr>
-                            <th>Nama</th>
-                            <td><input type="text" name="nama" value=""></td>
+                            <th>
+                                NIS
+                            </th>
+                            <td>
+                                : 
+                            </td>
+                            <td>
+                                --Nis siswa--<%//panggil NIS%>
+                            </td>
                         </tr>
                         <tr>
-                            <th>Kode</th>
-                            <td><input type="text" name="kode" value=""></td>
+                            <th>
+                                Nama Siswa
+                            </th>
+                            <td>
+                                : 
+                            </td>
+                            <td>
+                                --Nama siswa--<%//panggil nama siswa%>
+                            </td>
                         </tr>
+                    </table>
+                    <br>
+                    Masukkan Data siswa
+                    <table border="1" style="text-align: left;background-color: white;">
                         <tr>
-                            <th>Semester</th>
-                            <td><input type="text" name="semester" value=""></td>
-                        </tr>
-                        <tr>
+                            <th>Mata Pelajaran</th>
                             <th>Nilai Tugas</th>
-                            <td><input type="text" name="nilai_tugas" value=""></td>
-                        </tr>
-                        <tr>
                             <th>Nilai Harian</th>
-                            <td><input type="text" name="nilai_harian" value=""></td>
-                        </tr>
-                        <tr>
                             <th>Nilai UTS</th>
-                            <td><input type="text" name="nilai_uts" value=""></td>
+                            <th>Mata UAS</th>
                         </tr>
                         <tr>
-                            <th>Nilai UAS</th>
-                            <td><input type="text" name="nilai_uas" value=""></td>
+                            <th>
+                                Ilmu Pengetahuan Alam
+                            </th>
+                            <td>
+                                <select>
+                                    <option value="none">pilih</option>
+                                    <%
+                                        for(int i=0; i<=10;i++){
+                                            out.print("<option value=\""+i+"\">"+i+"</option>");
+                                        }
+                                    %>
+                                </select>
+                                .
+                                <select>
+                                    <option value="none">pilih</option>
+                                    <%
+                                        for(int i=0; i<100;i=i+=5){
+                                            out.print("<option value=\""+i+"\">"+i+"</option>");
+                                        }
+                                    %>
+                                </select>
+                            </td>
+                            <td>
+                                <select>
+                                    <option value="none">pilih</option>
+                                    <%
+                                        for(int i=0; i<=10;i++){
+                                            out.print("<option value=\""+i+"\">"+i+"</option>");
+                                        }
+                                    %>
+                                </select>
+                                .
+                                <select>
+                                    <option value="none">pilih</option>
+                                    <%
+                                        for(int i=0; i<100;i=i+=5){
+                                            out.print("<option value=\""+i+"\">"+i+"</option>");
+                                        }
+                                    %>
+                                </select>
+                            </td>
+                            <td>
+                                <select>
+                                    <option value="none">pilih</option>
+                                    <%
+                                        for(int i=0; i<=10;i++){
+                                            out.print("<option value=\""+i+"\">"+i+"</option>");
+                                        }
+                                    %>
+                                </select>
+                                .
+                                <select>
+                                    <option value="none">pilih</option>
+                                    <%
+                                        for(int i=0; i<100;i=i+=5){
+                                            out.print("<option value=\""+i+"\">"+i+"</option>");
+                                        }
+                                    %>
+                                </select>
+                            </td>
+                            <td>
+                                <select>
+                                    <option value="none">pilih</option>
+                                    <%
+                                        for(int i=0; i<=10;i++){
+                                            out.print("<option value=\""+i+"\">"+i+"</option>");
+                                        }
+                                    %>
+                                </select>
+                                .
+                                <select>
+                                    <option value="none">pilih</option>
+                                    <%
+                                        for(int i=0; i<100;i=i+=5){
+                                            out.print("<option value=\""+i+"\">"+i+"</option>");
+                                        }
+                                    %>
+                                </select>
+                            </td>
                         </tr>
-                    </tbody>
-                </table>
-                <input type="submit" value="Simpan">
-            </form>
+                        <tr>
+                            
+                        </tr>
+                        <tr>
+                            
+                        </tr>
+                        <tr>
+                            
+                        </tr>
+                        <tr>
+                            
+                        </tr>
+                        <tr>
+                            
+                        </tr>
+                        <tr>
+                            
+                        </tr>
+                        <tr>
+                            
+                        </tr>
+                        <tr>
+                            
+                        </tr>
+                    </table>
+                    <input type="submit" value="Simpan">
+                </form>
+            </div>
 
             <%! public double nilai_semester(double tugas, double harian, double uts, double uas) {
                     return ((0.1 * tugas) + (0.2 * harian) + (0.3 * uts) + (0.4 * uas));

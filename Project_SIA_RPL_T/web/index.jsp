@@ -1,11 +1,12 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<link href="assets/css/style-home.css" rel="stylesheet" type="text/css"/>
+
 
 <html>
     <head>
         <title>SIA</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="assets/css/style-home.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <center>    
@@ -22,11 +23,10 @@
             
         </div>
         <div class="p1">
-            <a href="Awal.html"><font color="blue">MASUK</font></a>
+            <a href="menu.jsp"><font color="blue">MASUK</font></a>
             
         </div>
         
         
     </body>
 </html>
-

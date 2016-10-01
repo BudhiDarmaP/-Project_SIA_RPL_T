@@ -13,11 +13,10 @@ body {
 }
 
 #form {
-    text-align:center;
+    text-align: center;
     margin-top: 10px;
     background-color: aliceblue;
 /*    font-family:helvetica;*/
-    text-align: center;
     font-size: 24;
     border-style: double;
     border-radius: 5px;
@@ -37,18 +36,29 @@ body {
     margin-right: 35%;
 }
 
-#form-after-select-nim {
-    text-align:center;
+#form-insert-score {
+    text-align: center;
     margin-top: 10px;
     background-color: aliceblue;
 /*    font-family:helvetica;*/
+    border-style: solid;
+    font-size: 24;
+    height: 77%;
+    margin-left: 8.5%;
+    margin-right: 8.5%;
+}
+
+#form-menu {
+    margin-top: 10px;
+    background-color: white;
+    font-family:helvetica;
     text-align: center;
     font-size: 24;
     border-style: double;
     border-radius: 5px;
-    height: 77%;
-    margin-left: 8.5%;
-    margin-right: 8.5%;
+    height: 59%;
+    margin-left: 30%;
+    margin-right: 30%;
 }
 
 #c1{
