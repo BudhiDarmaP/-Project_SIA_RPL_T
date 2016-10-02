@@ -1,6 +1,7 @@
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.Connection"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%String error = request.getParameter("error");%>
 
 <html>
     <head>
@@ -58,80 +59,16 @@
                                 Ilmu Pengetahuan Alam
                             </th>
                             <td>
-                                <select>
-                                    <option value="none">pilih</option>
-                                    <%
-                                        for(int i=0; i<=10;i++){
-                                            out.print("<option value=\""+i+"\">"+i+"</option>");
-                                        }
-                                    %>
-                                </select>
-                                .
-                                <select>
-                                    <option value="none">pilih</option>
-                                    <%
-                                        for(int i=0; i<100;i=i+=5){
-                                            out.print("<option value=\""+i+"\">"+i+"</option>");
-                                        }
-                                    %>
-                                </select>
+                                <input type="text" name="a1" value="">
                             </td>
                             <td>
-                                <select>
-                                    <option value="none">pilih</option>
-                                    <%
-                                        for(int i=0; i<=10;i++){
-                                            out.print("<option value=\""+i+"\">"+i+"</option>");
-                                        }
-                                    %>
-                                </select>
-                                .
-                                <select>
-                                    <option value="none">pilih</option>
-                                    <%
-                                        for(int i=0; i<100;i=i+=5){
-                                            out.print("<option value=\""+i+"\">"+i+"</option>");
-                                        }
-                                    %>
-                                </select>
+                                <input type="text" name="a2" value="">
                             </td>
                             <td>
-                                <select>
-                                    <option value="none">pilih</option>
-                                    <%
-                                        for(int i=0; i<=10;i++){
-                                            out.print("<option value=\""+i+"\">"+i+"</option>");
-                                        }
-                                    %>
-                                </select>
-                                .
-                                <select>
-                                    <option value="none">pilih</option>
-                                    <%
-                                        for(int i=0; i<100;i=i+=5){
-                                            out.print("<option value=\""+i+"\">"+i+"</option>");
-                                        }
-                                    %>
-                                </select>
+                                <input type="text" name="a3" value="">
                             </td>
                             <td>
-                                <select>
-                                    <option value="none">pilih</option>
-                                    <%
-                                        for(int i=0; i<=10;i++){
-                                            out.print("<option value=\""+i+"\">"+i+"</option>");
-                                        }
-                                    %>
-                                </select>
-                                .
-                                <select>
-                                    <option value="none">pilih</option>
-                                    <%
-                                        for(int i=0; i<100;i=i+=5){
-                                            out.print("<option value=\""+i+"\">"+i+"</option>");
-                                        }
-                                    %>
-                                </select>
+                                <input type="text" name="a4" value="">
                             </td>
                         </tr>
                         <tr>

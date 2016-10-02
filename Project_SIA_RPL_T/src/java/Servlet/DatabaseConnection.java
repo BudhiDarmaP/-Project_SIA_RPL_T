@@ -9,7 +9,7 @@ import oracle.jdbc.pool.OracleDataSource;
  * @author Lycorice
  */
 public class DatabaseConnection {
-    private String jdbcURL = "jdbc:oracle:thin:@localhost:1521:XE";
+    private String jdbcURL = "jdbc:oracle:thin:@localhost:1521:xe";
     private String user = "SIA";
     private String password = "SIA";
 //    private String jdbcURL = "jdbc:oracle:thin:@172.23.9.185:1521:orcl";

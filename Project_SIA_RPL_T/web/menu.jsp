@@ -20,7 +20,7 @@
             <div id="form-menu">
                 <br>
                 Memasukkan Nilai Siswa
-                <form action="Awal.html">
+                <form action="awal.jsp">
                     <br>
                     <input type="submit" value="Nilai Siswa">
                 </form>

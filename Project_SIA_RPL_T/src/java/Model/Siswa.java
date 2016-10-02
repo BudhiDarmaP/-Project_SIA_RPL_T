@@ -6,9 +6,10 @@ package Model;
 public class Siswa {
     private String nis;
     private String nama;
-    private String tempatLahir;
-    private String tanggalLahir;
-    private int semester;
+    private String tempatTanggalLahir;
+    private String alamat;
+    private String idKelas;
+//    private int semester;
     private double nilaiTugas;
     private double nilaiHarian;
     private double nilaiUts;
@@ -32,29 +33,30 @@ public class Siswa {
         this.nama = nama;
     }
 
-    public String getTempatLahir() {
-        return tempatLahir;
+    public String getTempatTanggalLahir() {
+        return tempatTanggalLahir;
     }
 
-    public void setTempatLahir(String tempatLahir) {
-        this.tempatLahir = tempatLahir;
+    public void setTempatTanggalLahir(String tempatTanggalLahir) {
+        this.tempatTanggalLahir = tempatTanggalLahir;
     }
 
-    public String getTanggalLahir() {
-        return tanggalLahir;
+    
+    public String getAlamat() {
+        return alamat;
     }
 
-    public void setTanggalLahir(String tanggalLahir) {
-        this.tanggalLahir = tanggalLahir;
+    public void setAlamat(String alamat) {
+        this.alamat = alamat;
     }
-
-    public int getSemester() {
-        return semester;
-    }
-
-    public void setSemester(int semester) {
-        this.semester = semester;
-    }
+    
+//    public int getSemester() {
+//        return semester;
+//    }
+//
+//    public void setSemester(int semester) {
+//        this.semester = semester;
+//    }
 
     public double getNilaiTugas() {
         return nilaiTugas;
@@ -103,5 +105,12 @@ public class Siswa {
     public void setNilaiAkhir(double nilaiAkhir) {
         this.nilaiAkhir = nilaiAkhir;
     }
-    
+
+    public String getIdKelas() {
+        return idKelas;
+    }
+
+    public void setIdKelas(String idKelas) {
+        this.idKelas = idKelas;
+    }
 }
