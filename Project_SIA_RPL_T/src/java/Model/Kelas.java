@@ -11,31 +11,7 @@ package Model;
  */
 public class Kelas {
     private String idKelas;
-    private String tahunAjaran;
-    private String nis;
-
-    public String getIdKelas() {
-        return idKelas;
-    }
-
-    public void setIdKelas(String idKelas) {
-        this.idKelas = idKelas;
-    }
-
-    public String getTahunAjaran() {
-        return tahunAjaran;
-    }
-
-    public void setTahunAjaran(String tahunAjaran) {
-        this.tahunAjaran = tahunAjaran;
-    }
-
-    public String getNis() {
-        return nis;
-    }
-
-    public void setNis(String nis) {
-        this.nis = nis;
-    }
+    private String jumlahSiswa;
+    
     
 }

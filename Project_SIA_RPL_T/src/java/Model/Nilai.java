@@ -5,7 +5,7 @@ package Model;
  */
 public class Nilai {
     private String kode;
-    private String nim;
+    private String nis;
     private int semester;
     private double kkm;
     private double nilaiTugas;
@@ -23,12 +23,12 @@ public class Nilai {
         this.kode = kode;
     }
 
-    public String getNim() {
-        return nim;
+    public String getNis() {
+        return nis;
     }
 
-    public void setNim(String nim) {
-        this.nim = nim;
+    public void setNis(String nis) {
+        this.nis = nis;
     }
 
     public int getSemester() {

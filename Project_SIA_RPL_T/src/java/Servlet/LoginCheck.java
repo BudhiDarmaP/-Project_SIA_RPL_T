@@ -5,18 +5,14 @@
  */
 package Servlet;
 
-import Model.Siswa;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -68,7 +64,7 @@ public class LoginCheck extends HttpServlet {
             throws ServletException, IOException {
         String nis = request.getParameter("nis");
         try {
-            if (new DataSiswa().find(nis))response.sendRedirect("Input.jsp");
+            if (new DataSiswa().find(nis))response.sendRedirect("Input.jsp?nis="+nis);
             else response.sendRedirect("awal.jsp?error=1");
         } catch (SQLException ex) {
             Logger.getLogger(LoginCheck.class.getName()).log(Level.SEVERE, null, ex);

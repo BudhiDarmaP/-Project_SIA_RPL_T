@@ -23,7 +23,8 @@ public class DataSiswa {
         ArrayList<Siswa> siswaList = new ArrayList<Siswa>();
         try {
             connection = database.getConnection();
-            statement = connection.prepareStatement("select nis, nama from siswa"
+            statement = connection.prepareStatement("select nis, nama, tempat_tanggal_lahir,"
+                    + "alamat, id_kelas from siswa"
                     //                    + "where alamat is not null and tempat_tanggal_lahir is not null;"
                     + "");
             resultSet = statement.executeQuery();
@@ -32,9 +33,9 @@ public class DataSiswa {
                 Siswa siswa = new Siswa();
                 siswa.setNis(resultSet.getString("nis"));
                 siswa.setNama(resultSet.getString("nama"));
-//                siswa.setTempatTanggalLahir(resultSet.getString("tempat_tanggal_lahir"));
-//                siswa.setAlamat(resultSet.getString("alamat"));
-//                siswa.setIdKelas(resultSet.getString("idkelas"));
+                siswa.setTempatTanggalLahir(resultSet.getString("tempat_tanggal_lahir"));
+                siswa.setAlamat(resultSet.getString("alamat"));
+                siswa.setIdKelas(resultSet.getString("id_kelas"));
                 siswaList.add(siswa);
             }
         } finally {
@@ -62,15 +63,43 @@ public class DataSiswa {
 
     public boolean find(String key) throws SQLException {
         connection = database.getConnection();
-        PreparedStatement statement = connection.prepareStatement("select nis from siswa");
-        ResultSet resultSet = statement.executeQuery();
+//        PreparedStatement statement = connection.prepareStatement("select nis from siswa");
+//        ResultSet resultSet = statement.executeQuery();
         
         for (Siswa siswa : new DataSiswa().list()) {
             if (siswa.getNis().equals(key)) {
                 return true;
             }
-            else return false;
+//            else return false;
         }
         return false;
     }
+    
+    public String findNama(String key) throws SQLException{
+        connection = database.getConnection();
+//        PreparedStatement statement = connection.prepareStatement("select nis,nama from siswa");
+//        ResultSet resultSet = statement.executeQuery();
+        String hasil;
+        for (Siswa siswa : new DataSiswa().list()) {
+            if (siswa.getNis().equals(key)) {
+                return siswa.getNama();
+            }
+        }
+        return key;
+    }
+    
+    public String findIdKelas(String key) throws SQLException{
+        connection = database.getConnection();
+//        PreparedStatement statement = connection.prepareStatement("select nis,id_kelas from siswa where nis = "+key);
+//        ResultSet resultSet = statement.executeQuery();
+        String hasil;
+        for (Siswa siswa : new DataSiswa().list()) {
+            if (siswa.getNis().equals(key)) {
+                return siswa.getIdKelas();
+            }
+        }
+        return key;
+    }
+    
+    
 }

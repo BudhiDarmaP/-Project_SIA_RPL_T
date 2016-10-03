@@ -5,10 +5,7 @@
  */
 package Servlet;
 
-import Model.Siswa;
-import Servlet.DataInput;
 import java.sql.SQLException;
-import java.util.List;
 
 /**
  *
@@ -16,10 +13,17 @@ import java.util.List;
  */
 public class test {
     public static void main(String[] args) throws SQLException {
-        DataSiswa data = new DataSiswa();
-        for (Siswa siswa : data.list()){
-            System.out.println(siswa.getNis());
-            if (siswa.getNis().equals("16042"))System.out.println("ada");
+//        DataSiswa data = new DataSiswa();
+        String nis = "16001";
+        String idkelas= new DataSiswa().findIdKelas(nis);
+        System.out.println(idkelas);
+        String kelas=String.valueOf(idkelas.charAt(0)) ;
+        System.out.println(kelas);
+        String asd="IPS";
+//        System.out.println(new );
+        if (new DataSiswa().find("16041")){
+            System.out.println("ok");
         }
+        else System.out.println("bad");
     }
 }

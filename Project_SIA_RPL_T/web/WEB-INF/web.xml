@@ -12,6 +12,14 @@
         <servlet-name>SiswaServlet</servlet-name>
         <servlet-class>Servlet.SiswaServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>InputNilai</servlet-name>
+        <servlet-class>Servlet.InputNilai</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>HitungNilai</servlet-name>
+        <servlet-class>Servlet.HitungNilai</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>InputServlet</servlet-name>
         <url-pattern>/InputServlet</url-pattern>
@@ -23,6 +31,14 @@
     <servlet-mapping>
         <servlet-name>SiswaServlet</servlet-name>
         <url-pattern>/SiswaServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>HitungNilai</servlet-name>
+        <url-pattern>/HitungNilai</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>InputNilai</servlet-name>
+        <url-pattern>/InputNilai</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
