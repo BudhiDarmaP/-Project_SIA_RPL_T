@@ -70,7 +70,7 @@
                             <th>Nilai Tugas</th>
                             <th>Nilai Harian</th>
                             <th>Nilai UTS</th>
-                            <th>Mata UAS</th>
+                            <th>Nilai UAS</th>
                         </tr>
                         <%
                             String[] daftarMataPelajaran ={
@@ -125,19 +125,15 @@
                                     + "</th>"
                                     + "<td>"
                                     + nilai0
-//                                    + new DataNilai().cariNilai(nis, daftarKelas[i], 0)
                                     + "</td>"
                                     + "<td>"
                                     + nilai1
-//                                    + new DataNilai().cariNilai(nis, daftarKelas[i], 1)
                                     + "</td>"
                                     + "<td>"
                                     + nilai2
-//                                    + new DataNilai().cariNilai(nis, daftarKelas[i], 2)
                                     + "</td>"
                                     + "<td>"
                                     + nilai3
-//                                    + new DataNilai().cariNilai(nis, daftarKelas[i], 3)
                                     + "</td>"
 //                                    + "</tr>"
                                     + "");

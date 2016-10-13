@@ -33,12 +33,12 @@ public class DataNilai {
             while (resultSet.next()) {
                 Nilai nilai = new Nilai();
                 nilai.setSemester(Integer.parseInt(resultSet.getString("nis")));
-                nilai.setNilaiTugas(Integer.parseInt(resultSet.getString("nilai_tugas")));
-                nilai.setNilaiHarian(Integer.parseInt(resultSet.getString("nilai_harian")));
-                nilai.setNilaiUts(Integer.parseInt(resultSet.getString("nilai_uts")));
-                nilai.setNilaiUas(Integer.parseInt(resultSet.getString("nilai_uas")));
-                nilai.setNilaiSemester(Integer.parseInt(resultSet.getString("nilai_semester")));
-                nilai.setNilaiAkhir(Integer.parseInt(resultSet.getString("nilai_akhir")));
+                nilai.setNilaiTugas(Double.parseDouble(resultSet.getString("nilai_tugas")));
+                nilai.setNilaiHarian(Double.parseDouble(resultSet.getString("nilai_harian")));
+                nilai.setNilaiUts(Double.parseDouble(resultSet.getString("nilai_uts")));
+                nilai.setNilaiUas(Double.parseDouble(resultSet.getString("nilai_uas")));
+                nilai.setNilaiSemester(Double.parseDouble(resultSet.getString("nilai_semester")));
+                nilai.setNilaiAkhir(Double.parseDouble(resultSet.getString("nilai_akhir")));
                 nilai.setNis(resultSet.getString("nis"));
                 nilai.setKode(resultSet.getString("kode"));
                 nilaiList.add(nilai);
@@ -67,7 +67,7 @@ public class DataNilai {
     }
     
     public void inputNilai(int semester, double nilaiTugas, double nilaiHarian, 
-            double nilaiUTS, double nilaiUAS, String nis, String idKelas) throws SQLException{
+            double nilaiUts, double nilaiUas, String nis, String idKelas) throws SQLException, Exception{
         connection = database.getConnection();
         PreparedStatement statement = connection.prepareStatement(""
                 + "insert into NILAI(semester, nilai_tugas, nilai_harian, "
@@ -78,10 +78,18 @@ public class DataNilai {
 //                + ", "+nilaiUAS+", "+nis+", '"+idKelas+"')"
         );
         statement.setString(1, String.valueOf(semester));
-        statement.setString(2, String.valueOf(nilaiTugas));
-        statement.setString(3, String.valueOf(nilaiHarian));
-        statement.setString(4, String.valueOf(nilaiUTS));
-        statement.setString(5, String.valueOf(nilaiUAS));
+        try {
+            double iNilaiTugas = nilaiTugas;
+            double iNilaiHarian = nilaiHarian;
+            double iNilaiUts = nilaiUts;
+            double iNilaiUas = nilaiUas;
+        statement.setString(2, String.valueOf(iNilaiTugas));
+        statement.setString(3, String.valueOf(iNilaiHarian));
+        statement.setString(4, String.valueOf(iNilaiUts));
+        statement.setString(5, String.valueOf(iNilaiUas));
+        } catch (NumberFormatException ex){
+            throw new Exception ("awal.jsp?error=1");
+        }
         statement.setString(6, nis);
         statement.setString(7, idKelas);
         ResultSet resultSet = statement.executeQuery();
@@ -119,12 +127,12 @@ public class DataNilai {
             while (resultSet.next()) {
                 Nilai nilai = new Nilai();
                 nilai.setSemester(Integer.parseInt(resultSet.getString("nis")));
-                nilai.setNilaiTugas(Integer.parseInt(resultSet.getString("nilai_tugas")));
-                nilai.setNilaiHarian(Integer.parseInt(resultSet.getString("nilai_harian")));
-                nilai.setNilaiUts(Integer.parseInt(resultSet.getString("nilai_uts")));
-                nilai.setNilaiUas(Integer.parseInt(resultSet.getString("nilai_uas")));
-                nilai.setNilaiSemester(Integer.parseInt(resultSet.getString("nilai_semester")));
-                nilai.setNilaiAkhir(Integer.parseInt(resultSet.getString("nilai_akhir")));
+                nilai.setNilaiTugas(Double.parseDouble(resultSet.getString("nilai_tugas")));
+                nilai.setNilaiHarian(Double.parseDouble(resultSet.getString("nilai_harian")));
+                nilai.setNilaiUts(Double.parseDouble(resultSet.getString("nilai_uts")));
+                nilai.setNilaiUas(Double.parseDouble(resultSet.getString("nilai_uas")));
+                nilai.setNilaiSemester(Double.parseDouble(resultSet.getString("nilai_semester")));
+                nilai.setNilaiAkhir(Double.parseDouble(resultSet.getString("nilai_akhir")));
                 nilai.setNis(resultSet.getString("nis"));
                 nilai.setKode(resultSet.getString("kode"));
                 nilaiList.add(nilai);

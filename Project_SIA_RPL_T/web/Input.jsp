@@ -82,7 +82,7 @@
                             <th>Nilai Tugas</th>
                             <th>Nilai Harian</th>
                             <th>Nilai UTS</th>
-                            <th>Mata UAS</th>
+                            <th>Nilai UAS</th>
                         </tr>
                         <tr>
                             <th>
@@ -257,32 +257,6 @@
                 </form>
             </div>
 
-            <%! // public double nilai_semester(double tugas, double harian, double uts, double uas) {
-//                    return ((0.1 * tugas) + (0.2 * harian) + (0.3 * uts) + (0.4 * uas));
-//                }
-            %>
-
-            <%! // public double nilai_akhir(double akhir1, double akhir2) {
-//                    return (akhir1 + akhir2) / 2;
-//                }
-            %>
-
-            <% // String jdbcURL = null;
-//                String username = null;
-//                String password = null;
-//
-//                Connection conn = null;
-//                try {
-//                    jdbcURL = "jdbc:oracle:thin:@172.23.9.185:1521:orcl";
-//                    username = "145314063";
-//                    password = "FUCKde96";
-//                    Class.forName("oracle.jdbc.driver.OracleDriver");
-//                    conn = DriverManager.getConnection(jdbcURL, username, password);
-//                } catch (Exception ex) {
-//                    ex.printStackTrace();
-//                }
-            //insert into nilai (nilai_tugas, nilai_harian, nilai_uts, nilai_uas, nilai_semester, status_kenaikan, nilai_akhir)
-//            value ()%>
         </div>
     </body>
 </html>

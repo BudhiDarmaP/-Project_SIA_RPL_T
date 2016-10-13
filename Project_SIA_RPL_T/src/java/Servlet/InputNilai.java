@@ -32,6 +32,7 @@ public class InputNilai extends HttpServlet {
             String idKelas = new DataSiswa().findIdKelas(nis);
             String kelas=String.valueOf(idKelas.charAt(0)) ;
 //            String idKelas = "7A";
+            
             new DataNilai().inputNilai(Integer.parseInt(semester), 
                     Double.parseDouble(request.getParameter("a1")),
                     Double.parseDouble(request.getParameter("a2")),
@@ -94,6 +95,8 @@ public class InputNilai extends HttpServlet {
                     nis, kelas+"SEN");
             response.sendRedirect("tampilNilai1.jsp?nis="+nis+"&semester="+semester);
         } catch (SQLException ex) {
+            Logger.getLogger(InputNilai.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
             Logger.getLogger(InputNilai.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
