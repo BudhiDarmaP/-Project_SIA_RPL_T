@@ -32,7 +32,25 @@ public class InputNilai extends HttpServlet {
             String idKelas = new DataSiswa().findIdKelas(nis);
             String kelas=String.valueOf(idKelas.charAt(0)) ;
 //            String idKelas = "7A";
-            
+            CheckInputNilai check = new CheckInputNilai();
+            String[] code= {"a","b","c","d","e","f","g","h","i","j"};
+            for (int i = 0; i < 10; i++) {
+                if (!check.CheckTypeDataInteger(check.CheckTandaBaca(request.getParameter(code[i]+"1"))))
+                    response.sendRedirect("Input.jsp?nis="+nis+"&error=1");
+                if (!check.CheckTypeDataInteger(check.CheckTandaBaca(request.getParameter(code[i]+"2"))))
+                    response.sendRedirect("Input.jsp?nis="+nis+"&error=1");
+                if (!check.CheckTypeDataInteger(check.CheckTandaBaca(request.getParameter(code[i]+"3"))))
+                    response.sendRedirect("Input.jsp?nis="+nis+"&error=1");
+                if (!check.CheckTypeDataInteger(check.CheckTandaBaca(request.getParameter(code[i]+"4"))))
+                    response.sendRedirect("Input.jsp?nis="+nis+"&error=1");
+                if (check.ChedckNilai((request.getParameter(code[i]+"1")), 
+                        (request.getParameter(code[i]+"2")), 
+                        (request.getParameter(code[i]+"3")), 
+                        (request.getParameter(code[i]+"4")))==1) {
+                    response.sendRedirect("Input.jsp?nis="+nis+"&error=1");
+                    
+                }
+            }
             new DataNilai().inputNilai(Integer.parseInt(semester), 
                     Double.parseDouble(request.getParameter("a1")),
                     Double.parseDouble(request.getParameter("a2")),

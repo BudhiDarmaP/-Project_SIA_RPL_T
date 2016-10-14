@@ -32,7 +32,7 @@ public class DataNilai {
 
             while (resultSet.next()) {
                 Nilai nilai = new Nilai();
-                nilai.setSemester(Integer.parseInt(resultSet.getString("nis")));
+                nilai.setSemester(Integer.parseInt(resultSet.getString("semester")));
                 nilai.setNilaiTugas(Double.parseDouble(resultSet.getString("nilai_tugas")));
                 nilai.setNilaiHarian(Double.parseDouble(resultSet.getString("nilai_harian")));
                 nilai.setNilaiUts(Double.parseDouble(resultSet.getString("nilai_uts")));
@@ -126,7 +126,7 @@ public class DataNilai {
 
             while (resultSet.next()) {
                 Nilai nilai = new Nilai();
-                nilai.setSemester(Integer.parseInt(resultSet.getString("nis")));
+                nilai.setSemester(Integer.parseInt(resultSet.getString("semester")));
                 nilai.setNilaiTugas(Double.parseDouble(resultSet.getString("nilai_tugas")));
                 nilai.setNilaiHarian(Double.parseDouble(resultSet.getString("nilai_harian")));
                 nilai.setNilaiUts(Double.parseDouble(resultSet.getString("nilai_uts")));
@@ -158,22 +158,15 @@ public class DataNilai {
             }
         }
         return nilaiList;
-//        for (Nilai nilai : new DataNilai().list()) {
-//            if (nilai.getNis().equals(nis)) {
-//                if (index==0) {
-//                    return nilai.getNilaiTugas();
-//                }
-//                else if (index==1) {
-//                    return nilai.getNilaiHarian();
-//                }
-//                else if (index==2) {
-//                    return nilai.getNilaiUts();
-//                }
-//                else if (index==3) {
-//                    return nilai.getNilaiUas();
-//                }
-//            }
-//        }
-//        return 0;
+    }
+    public int checkSemester (String nis) throws SQLException{
+        for (Nilai nilai : new DataNilai().list()) {
+            if (nilai.getNis().equals(nis)) {
+                if (nilai.getSemester()!=1&&nilai.getSemester()!=2) {
+                return 0;
+                }
+            }
+        }
+        return 1;
     }
 }
