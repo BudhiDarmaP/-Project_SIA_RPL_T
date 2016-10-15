@@ -159,17 +159,59 @@ public class DataNilai {
         }
         return nilaiList;
     }
-    public int checkSemester (String nis) throws SQLException{
-        for (Nilai nilai : new DataNilai().list()) {
-            if (nilai.getNis().equals(nis)) {
-                if (nilai.getSemester()!=1&&nilai.getSemester()!=2) {
-                return 0;
+    public int checkSemester (String nis, int semester) throws SQLException{
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        ArrayList<Nilai> nilaiList = new ArrayList<Nilai>();
+        try {
+            connection = database.getConnection();
+            statement = connection.prepareStatement("select * from nilai "
+                                        + "where nis = "+nis
+                    + "");
+            resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                Nilai nilai = new Nilai();
+                nilai.setSemester(Integer.parseInt(resultSet.getString("semester")));
+                nilai.setNilaiTugas(Double.parseDouble(resultSet.getString("nilai_tugas")));
+                nilai.setNilaiHarian(Double.parseDouble(resultSet.getString("nilai_harian")));
+                nilai.setNilaiUts(Double.parseDouble(resultSet.getString("nilai_uts")));
+                nilai.setNilaiUas(Double.parseDouble(resultSet.getString("nilai_uas")));
+                nilai.setNilaiSemester(Double.parseDouble(resultSet.getString("nilai_semester")));
+                nilai.setNilaiAkhir(Double.parseDouble(resultSet.getString("nilai_akhir")));
+                nilai.setNis(resultSet.getString("nis"));
+                nilai.setKode(resultSet.getString("kode"));
+                nilaiList.add(nilai);
+            }
+        } finally {
+            if (resultSet != null) {
+                try {
+                    resultSet.close();
+                } catch (SQLException ignore) {
                 }
             }
-            else{
-                return 1;
+            if (statement != null) {
+                try {
+                    statement.close();
+                } catch (SQLException ignore) {
+                }
+            }
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException ignore) {
+                }
             }
         }
-        return 1;
+        if (nilaiList.isEmpty()&&semester==1) return 1;
+        for (Nilai nilai : nilaiList) {
+            if (nilai.getNis().equals(nis)) {
+                if (nilai.getSemester()==1&&semester==1) return 2;
+                else if (nilai.getSemester()==1&&semester==2) return 1;
+                else if (nilai.getSemester()==2&&semester==1) return 2;
+                else if (nilai.getSemester()==2&&semester==2) return 2;
+            }
+        }
+        return 0;
     }
 }
