@@ -1,13 +1,14 @@
+<%@page import="Servlet.DatabaseConnection"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.Connection"%>
+<%@page import="Model.Siswa"%>
+<%@page import="Servlet.DataSiswa"%>
+<%@page import="Servlet.DataNilai"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>SIA</title>
-        <link href="assets/css/style.css" rel="stylesheet" type="text/css">
-    </head>
+<%String error = request.getParameter("error");%>
 
-    <body>
-        <%String error = request.getParameter("error");%>
 <html>
     <head>
         <title>SIA</title>
@@ -21,25 +22,13 @@
         </script>
     </head>
     <body>
-        <div id="c1"></div>
-        <div id="c2"></div>
-        <div id="header">
-            <a href="index.jsp">
-                <img src="assets/images/logo-SIA-300x241.png" style="width: auto;height: 100%">
-            </a>
-        </div>
-        <div id="form">
-            <br>
-            <form action="LoginCheck" id="form-find-nim-insert" method="GET"> 
-                <br>
-                Silahkan Masukkan NIS : 
-                <br>
-                <input type="text" name="nis" value="" size="5">
-                <input type="submit" value="Cari"> 
-                <p></p> 
-            </form>
-        </div>
+        <body>
+        <%
+        DatabaseConnection database = new DatabaseConnection();
+        Connection connection = database.getConnection();
+        String nis = request.getParameter("nis");
         
+        %>
         <div id="c1"></div>
         <div id="c2"></div>
         <div id="header">
@@ -47,21 +36,61 @@
                 <img src="assets/images/logo-SIA-300x241.png" style="width: auto;height: 100%">
             </a>
         </div>
-                <%! public void status(double akhir) {
-                int semester;
-                
-                if (semester == 2) {
-                    if(akhir>)
-//                }
-            }
-        %>
         <div id="form">
-            <form action="NIS.jsp">
-                NIM :<br>
-                Nama :<br>
-                Status :<br>
-                <input type="submit" value="Kembali">
-            </form>
-        </div>
+            <div id="form-insert-score">
+                <form action="DataNilai" method="POST">
+                    <table style="text-align: left; ">
+                        <tr>
+                            <th>
+                                NIS
+                            </th>
+                            <td>
+                                : 
+                            </td>
+                            <td>
+                                <%//panggil NIS
+                                out.print(nis);
+                                %>
+                                <input type="hidden" name="nis" value="<%=nis%>">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                Nama Siswa
+                            </th>
+                            <td>
+                                : 
+                            </td>
+                            <td>
+                                <%//panggil nama siswa
+                                out.print(new DataSiswa().findNama(nis));
+                                %>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                Semester
+                            </th>
+                            <td>
+                                : 
+                            </td>
+                            <td>
+                                <select name="semester">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                </select>
+                            </td>
+                        </tr>
+                    </table>
+                    <br>
+                    
+                <%--<%!--%>  public void status(double akhir) {
+                <!--int semester;-->
+                <!--if (semester == 2) {-->
+                    <!--if(akhir>)-->
+<!--//                }-->
+            <!--}-->
+        <!--%>-->
+        
     </body>
 </html>

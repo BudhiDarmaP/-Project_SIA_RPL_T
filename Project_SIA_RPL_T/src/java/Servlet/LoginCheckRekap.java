@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Lycorice
  */
-public class LoginCheck extends HttpServlet {
+public class LoginCheckRekap extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -64,10 +64,10 @@ public class LoginCheck extends HttpServlet {
             throws ServletException, IOException {
         String nis = request.getParameter("nis");
         try {
-            if (new DataSiswa().find(nis))response.sendRedirect("Input.jsp?nis="+nis);
-            else response.sendRedirect("awal.jsp?error=1");
+            if (new DataSiswa().find(nis))response.sendRedirect("Status.jsp?nis="+nis);
+            else response.sendRedirect("awal2.jsp?error=1");
         } catch (SQLException ex) {
-            Logger.getLogger(LoginCheck.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(LoginCheckRekap.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
