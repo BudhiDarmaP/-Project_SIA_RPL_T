@@ -46,11 +46,12 @@ public class InputNilai extends HttpServlet {
                 if (check.ChedckNilai((request.getParameter(code[i]+"1")), 
                         (request.getParameter(code[i]+"2")), 
                         (request.getParameter(code[i]+"3")), 
-                        (request.getParameter(code[i]+"4")))==1) {
+                        (request.getParameter(code[i]+"4")))==1) 
                     response.sendRedirect("Input.jsp?nis="+nis+"&error=1");
-                    
-                }
             }
+            int checkSemester = new DataNilai().checkSemester(nis, Integer.parseInt(semester));
+            if (checkSemester==0) response.sendRedirect("Input.jsp?nis="+nis+"&error=3");
+            else if (checkSemester==2) response.sendRedirect("Input.jsp?nis="+nis+"&error=2");
             new DataNilai().inputNilai(Integer.parseInt(semester), 
                     Double.parseDouble(request.getParameter("a1")),
                     Double.parseDouble(request.getParameter("a2")),
