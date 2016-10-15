@@ -13,6 +13,17 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>SIA</title>
         <link href="assets/css/style.css" rel="stylesheet" type="text/css">
+        <script type="text/javascript">
+            <% if ("1".equals(error)) {%>
+            alert("Nilai yang anda masukkan tidak sesuai!");
+            <%}%>
+            <% if ("2".equals(error)) {%>
+            alert("Nilai di Semester tersebut sudah ada!");
+            <%}%>
+            <% if ("3".equals(error)) {%>
+            alert("Nilai di Semester sebelumnya belum ada!");
+            <%}%>
+        </script>
     </head>
     <body>
         <%
