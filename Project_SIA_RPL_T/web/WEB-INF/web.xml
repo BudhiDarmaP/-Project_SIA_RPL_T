@@ -6,7 +6,7 @@
     </servlet>
     <servlet>
         <servlet-name>LoginCheck</servlet-name>
-        <servlet-class>Servlet.LoginCheckInput</servlet-class>
+        <servlet-class>Servlet.LoginCheck</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>SiswaServlet</servlet-name>

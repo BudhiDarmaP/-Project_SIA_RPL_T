@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Servlet;
 
 import java.io.IOException;
@@ -18,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Lycorice
  */
-public class LoginCheckInput extends HttpServlet {
+public class LoginCheck extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -67,7 +62,7 @@ public class LoginCheckInput extends HttpServlet {
             if (new DataSiswa().find(nis))response.sendRedirect("Input.jsp?nis="+nis);
             else response.sendRedirect("awal.jsp?error=1");
         } catch (SQLException ex) {
-            Logger.getLogger(LoginCheckInput.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(LoginCheck.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

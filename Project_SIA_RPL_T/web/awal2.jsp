@@ -23,7 +23,7 @@
         </div>
         <div id="form">
             <br>
-            <form action="LoginCheckRekap" id="form-find-nim-insert" method="GET"> 
+            <form action="LoginCheckRekap" method="GET"> 
                 <br>
                 Silahkan Masukkan NIS : 
                 <br>
