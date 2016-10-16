@@ -111,7 +111,7 @@
                             double nilai0=0,nilai1=0,nilai2=0,nilai3=0;
                             for (int i=0;i<daftarMataPelajaran.length;i++){
                                 for (Nilai nilai : nilaiList){
-                                    if (nilai.getKode().equals(daftarKelas[i])){
+                                    if (nilai.getKode().equals(daftarKelas[i])&&nilai.getSemester()==Integer.parseInt(semester)){
                                         nilai0=nilai.getNilaiTugas();
                                         nilai1=nilai.getNilaiHarian();
                                         nilai2=nilai.getNilaiUts();

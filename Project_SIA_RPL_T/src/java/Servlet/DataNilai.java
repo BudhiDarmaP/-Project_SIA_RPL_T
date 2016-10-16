@@ -256,8 +256,7 @@ public class DataNilai {
         }
         return nilaiSemester;
     }
-
-    public double checkNilaiSemester(String nis, int semester, String kode) throws SQLException {
+    public double panggilNilaiSemesterSatu(String nis, String kode) throws SQLException{
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         ArrayList<Nilai> nilaiList = new ArrayList<Nilai>();
@@ -302,26 +301,138 @@ public class DataNilai {
             }
         }
 
-        double nilaiSemester;
         for (Nilai nilai : nilaiList) {
-            if (nilai.getKode().equals(kode) && nilai.getNilaiSemester() == semester) {
+            if (nilai.getKode().equals(kode) && nilai.getSemester() == 1) {
                 return nilai.getNilaiSemester();
             }
         }
         return 0;
     }
-
-    public void hitungNilaiAkhir(String nis, String kode, int semester,
-            double nilaiTugas, double nilaiHarian, double nilaiUTS, double nilaiUAS) throws SQLException {
+    public double panggilNilaiSemesterDua(String nis, String kode) throws SQLException{
         PreparedStatement statement = null;
         ResultSet resultSet = null;
-        double nilaiAkhir = 0;
-        double nilaiSemester = checkNilaiSemester(nis, semester, kode);
-        double nilaiSemester1 = checkNilaiSemester(nis, 1, kode);
-        if (semester == 2) {
-            nilaiAkhir = (nilaiSemester1 + nilaiSemester) / 2;
-        }
+        ArrayList<Nilai> nilaiList = new ArrayList<Nilai>();
         try {
+            connection = database.getConnection();
+            statement = connection.prepareStatement("select * from nilai "
+                    + "where nis = " + nis
+                    + "");
+            resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                Nilai nilai = new Nilai();
+                nilai.setSemester(Integer.parseInt(resultSet.getString("semester")));
+                nilai.setNilaiTugas(Double.parseDouble(resultSet.getString("nilai_tugas")));
+                nilai.setNilaiHarian(Double.parseDouble(resultSet.getString("nilai_harian")));
+                nilai.setNilaiUts(Double.parseDouble(resultSet.getString("nilai_uts")));
+                nilai.setNilaiUas(Double.parseDouble(resultSet.getString("nilai_uas")));
+                nilai.setNilaiSemester(Double.parseDouble(resultSet.getString("nilai_semester")));
+                nilai.setNilaiAkhir(Double.parseDouble(resultSet.getString("nilai_akhir")));
+                nilai.setNis(resultSet.getString("nis"));
+                nilai.setKode(resultSet.getString("kode"));
+                nilaiList.add(nilai);
+            }
+        } finally {
+            if (resultSet != null) {
+                try {
+                    resultSet.close();
+                } catch (SQLException ignore) {
+                }
+            }
+            if (statement != null) {
+                try {
+                    statement.close();
+                } catch (SQLException ignore) {
+                }
+            }
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException ignore) {
+                }
+            }
+        }
+
+        for (Nilai nilai : nilaiList) {
+            if (nilai.getKode().equals(kode) && nilai.getSemester() == 2) {
+                return nilai.getNilaiSemester();
+            }
+        }
+        return 0;
+    }
+//    public double checkNilaiSemester(String nis, int semester, String kode) throws SQLException {
+//        PreparedStatement statement = null;
+//        ResultSet resultSet = null;
+//        ArrayList<Nilai> nilaiList = new ArrayList<Nilai>();
+//        try {
+//            connection = database.getConnection();
+//            statement = connection.prepareStatement("select * from nilai "
+//                    + "where nis = " + nis
+//                    + "");
+//            resultSet = statement.executeQuery();
+//
+//            while (resultSet.next()) {
+//                Nilai nilai = new Nilai();
+//                nilai.setSemester(Integer.parseInt(resultSet.getString("semester")));
+//                nilai.setNilaiTugas(Double.parseDouble(resultSet.getString("nilai_tugas")));
+//                nilai.setNilaiHarian(Double.parseDouble(resultSet.getString("nilai_harian")));
+//                nilai.setNilaiUts(Double.parseDouble(resultSet.getString("nilai_uts")));
+//                nilai.setNilaiUas(Double.parseDouble(resultSet.getString("nilai_uas")));
+//                nilai.setNilaiSemester(Double.parseDouble(resultSet.getString("nilai_semester")));
+//                nilai.setNilaiAkhir(Double.parseDouble(resultSet.getString("nilai_akhir")));
+//                nilai.setNis(resultSet.getString("nis"));
+//                nilai.setKode(resultSet.getString("kode"));
+//                nilaiList.add(nilai);
+//                System.out.println("b");
+//            }
+//        } finally {
+//            if (resultSet != null) {
+//                try {
+//                    resultSet.close();
+//                } catch (SQLException ignore) {
+//                }
+//            }
+//            if (statement != null) {
+//                try {
+//                    statement.close();
+//                } catch (SQLException ignore) {
+//                }
+//            }
+//            if (connection != null) {
+//                try {
+//                    connection.close();
+//                } catch (SQLException ignore) {
+//                }
+//            }
+//        }
+//
+//        double nilaiSemester;
+//        for (Nilai nilai : nilaiList) {
+//            if (nilai.getKode().equals(kode) && nilai.getSemester() == semester) {
+//                return nilai.getNilaiSemester();
+//            }
+//        }
+//        return 0;
+//    }
+
+    public void hitungNilaiAkhir(String nis, String kode, int semester, double nilai1, double nilai2) throws SQLException {
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        try {
+//            double nilaiAkhir = 0;
+//            double nilaiSemester = panggilNilaiSemesterSatu(nis, semester, kode);
+//            double nilaiSemester1 = checkNilaiSemester(nis, 1, kode);
+//            if (semester == 2) {
+//                nilaiAkhir = (nilaiSemester1 + nilaiSemester) / 2;
+//            }
+//            else if (semester == 1) {
+//                nilaiAkhir = nilaiSemester1;
+//            }
+//           
+            double nilaiAkhir =(nilai1+nilai2)/2;
+            
+//    
+    
             connection = database.getConnection();
             statement = connection.prepareStatement("update nilai set NILAI_AKHIR =" + nilaiAkhir + ""
                     + " where nis='" + nis + "' and semester=" + String.valueOf(semester) + " and kode='" + kode + "'");
