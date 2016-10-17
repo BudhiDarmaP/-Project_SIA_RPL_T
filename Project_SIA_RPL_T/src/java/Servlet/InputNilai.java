@@ -53,6 +53,7 @@ public class InputNilai extends HttpServlet {
             if (checkSemester==0) response.sendRedirect("Input.jsp?nis="+nis+"&error=3");
             else if (checkSemester==2) response.sendRedirect("Input.jsp?nis="+nis+"&error=2");
             //ipa
+            else{
             new DataNilai().inputNilai(Integer.parseInt(semester), 
                     Double.parseDouble(request.getParameter("a1")),
                     Double.parseDouble(request.getParameter("a2")),
@@ -182,7 +183,8 @@ public class InputNilai extends HttpServlet {
                     Double.parseDouble(request.getParameter("j2")),
                     Double.parseDouble(request.getParameter("j3")),
                     Double.parseDouble(request.getParameter("j4")));
-            ////////
+            }
+////////
             if (semester.equals("1")) {
                new DataNilai().hitungNilaiAkhir(nis, kelas+"IPA", Integer.parseInt(semester), 
                        new DataNilai().panggilNilaiSemesterSatu(nis, kelas+"IPA"),
@@ -246,6 +248,7 @@ public class InputNilai extends HttpServlet {
                new DataNilai().hitungNilaiAkhir(nis, kelas+"SEN", Integer.parseInt(semester), 
                        new DataNilai().panggilNilaiSemesterSatu(nis, kelas+"SEN"),
                        new DataNilai().panggilNilaiSemesterDua(nis, kelas+"SEN"));
+            
             }
 //            String[] mataPelajaranSemesterSatu= {};
 //            String[] mataPelajaranSemesterSatu

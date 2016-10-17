@@ -5,6 +5,7 @@
  */
 package Servlet;
 
+import Model.MataPelajaran;
 import Model.Nilai;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -256,7 +257,8 @@ public class DataNilai {
         }
         return nilaiSemester;
     }
-    public double panggilNilaiSemesterSatu(String nis, String kode) throws SQLException{
+
+    public double panggilNilaiSemesterSatu(String nis, String kode) throws SQLException {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         ArrayList<Nilai> nilaiList = new ArrayList<Nilai>();
@@ -308,7 +310,8 @@ public class DataNilai {
         }
         return 0;
     }
-    public double panggilNilaiSemesterDua(String nis, String kode) throws SQLException{
+
+    public double panggilNilaiSemesterDua(String nis, String kode) throws SQLException {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         ArrayList<Nilai> nilaiList = new ArrayList<Nilai>();
@@ -429,10 +432,9 @@ public class DataNilai {
 //                nilaiAkhir = nilaiSemester1;
 //            }
 //           
-            double nilaiAkhir =(nilai1+nilai2)/2;
-            
+            double nilaiAkhir = (nilai1 + nilai2) / 2;
+
 //    
-    
             connection = database.getConnection();
             statement = connection.prepareStatement("update nilai set NILAI_AKHIR =" + nilaiAkhir + ""
                     + " where nis='" + nis + "' and semester=" + String.valueOf(semester) + " and kode='" + kode + "'");
@@ -457,5 +459,122 @@ public class DataNilai {
                 }
             }
         }
+    }
+
+    public double panggilKKM(String kode) throws SQLException {
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        MataPelajaran mapel = new MataPelajaran();
+
+        try {
+            connection = database.getConnection();
+            statement = connection.prepareStatement("select * from mata_pelajaran "
+                    + "where kode = '" + kode
+                    + "'");
+            resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                mapel.setKkm(Double.parseDouble(resultSet.getString("kkm")));
+                mapel.setNama(resultSet.getString("nama"));
+                mapel.setKode(resultSet.getString("kode"));
+            }
+        } finally {
+            if (resultSet != null) {
+                try {
+                    resultSet.close();
+                } catch (SQLException ignore) {
+                }
+            }
+            if (statement != null) {
+                try {
+                    statement.close();
+                } catch (SQLException ignore) {
+                }
+            }
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException ignore) {
+                }
+            }
+        }
+        return mapel.getKkm();
+    }
+
+    public int panggilStatus(String nis, String kode, double kkm) throws SQLException {
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        ArrayList<Nilai> nilaiList = new ArrayList<Nilai>();
+        try {
+            connection = database.getConnection();
+            statement = connection.prepareStatement("select * from nilai "
+                    + "where nis = '" + nis
+                    + "'");
+            resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                Nilai nilai = new Nilai();
+                nilai.setSemester(Integer.parseInt(resultSet.getString("semester")));
+                nilai.setNilaiTugas(Double.parseDouble(resultSet.getString("nilai_tugas")));
+                nilai.setNilaiHarian(Double.parseDouble(resultSet.getString("nilai_harian")));
+                nilai.setNilaiUts(Double.parseDouble(resultSet.getString("nilai_uts")));
+                nilai.setNilaiUas(Double.parseDouble(resultSet.getString("nilai_uas")));
+                nilai.setNilaiSemester(Double.parseDouble(resultSet.getString("nilai_semester")));
+                nilai.setNilaiAkhir(Double.parseDouble(resultSet.getString("nilai_akhir")));
+                nilai.setNis(resultSet.getString("nis"));
+                nilai.setKode(resultSet.getString("kode"));
+                nilaiList.add(nilai);
+            }
+        } finally {
+            if (resultSet != null) {
+                try {
+                    resultSet.close();
+                } catch (SQLException ignore) {
+                }
+            }
+            if (statement != null) {
+                try {
+                    statement.close();
+                } catch (SQLException ignore) {
+                }
+            }
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException ignore) {
+                }
+            }
+        }
+        for (Nilai nilai : nilaiList) {
+            String kelas = String.valueOf(kode.charAt(0));
+            if (kode == nilai.getKode()) {
+                if (nilai.getSemester() == 2) {
+                    if (kelas == "7") {
+                        if (kkm <= nilai.getNilaiAkhir()) {
+                            System.out.println(kelas);
+                            return 2;
+                        } else if (kkm > nilai.getNilaiAkhir()) {
+                            return 1;
+                        }
+                    } else if (kelas == "8") {
+                        if (kkm <= nilai.getNilaiAkhir()) {
+                            System.out.println(kelas);
+                            return 2;
+                        } else if (kkm > nilai.getNilaiAkhir()) {
+                            return 1;
+                        }
+                    } else if (kelas == "9") {
+                        if (kkm <= nilai.getNilaiAkhir()) {
+                            return 3;
+                        } else if (kkm > nilai.getNilaiAkhir()) {
+                            return 4;
+                        }
+                    }
+                } else if (nilai.getSemester() == 1) {
+                    return 0;
+                }
+            }
+        }
+        return 0;
     }
 }
