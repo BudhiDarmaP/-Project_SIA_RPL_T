@@ -546,24 +546,24 @@ public class DataNilai {
             }
         }
         for (Nilai nilai : nilaiList) {
-            String kelas = String.valueOf(kode.charAt(0));
-            if (kode == nilai.getKode()) {
+            if (nilai.getKode().equals(kode)) {
+                String kelas = String.valueOf(kode.charAt(0));
                 if (nilai.getSemester() == 2) {
-                    if (kelas == "7") {
+                    if (kelas.equals("7")) {
                         if (kkm <= nilai.getNilaiAkhir()) {
                             System.out.println(kelas);
                             return 2;
                         } else if (kkm > nilai.getNilaiAkhir()) {
                             return 1;
                         }
-                    } else if (kelas == "8") {
+                    } else if (kelas.equals("8")) {
                         if (kkm <= nilai.getNilaiAkhir()) {
                             System.out.println(kelas);
                             return 2;
                         } else if (kkm > nilai.getNilaiAkhir()) {
                             return 1;
                         }
-                    } else if (kelas == "9") {
+                    } else if (kelas.equals("9")) {
                         if (kkm <= nilai.getNilaiAkhir()) {
                             return 3;
                         } else if (kkm > nilai.getNilaiAkhir()) {
