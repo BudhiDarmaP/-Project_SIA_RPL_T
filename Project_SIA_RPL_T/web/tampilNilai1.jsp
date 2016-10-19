@@ -77,8 +77,8 @@
                                 "Ilmu Pengetahuan Alam","Ilmu Pengetahuan Sosial",
                                 "Matematika","Agama dan Budi Pekerti",
                                 "Bahasa Indonesia","Bahasa Inggris",
-                                "Pancasila dan Kewarganegaraan","pendidikan jasmani dan kesehatan",
-                                "prakarya","seni budaya"
+                                "Pancasila dan Kewarganegaraan","Pendidikan Jasmani dan Kesehatan",
+                                "Prakarya","Seni Budaya"
                             };
                             String[] daftarKode1 = {
                                 "7IPA","7IPS","7MTK","7AGM","7IND","7ING","7KWN","7PJO","7PRK","7SEN"
@@ -135,7 +135,6 @@
                                     + "<td>"
                                     + nilai3
                                     + "</td>"
-//                                    + "</tr>"
                                     + "");
                             }
                         %>

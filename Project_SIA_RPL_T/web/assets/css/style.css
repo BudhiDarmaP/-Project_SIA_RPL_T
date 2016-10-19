@@ -48,6 +48,18 @@ body {
     margin-right: 8.5%;
 }
 
+#form-rekap-score {
+    text-align: center;
+    margin-top: 10px;
+    background-color: aliceblue;
+/*    font-family:helvetica;*/
+    border-style: solid;
+    font-size: 24;
+    height: 92%;
+    margin-left: 8.5%;
+    margin-right: 8.5%;
+}
+
 #form-menu {
     margin-top: 10px;
     background-color: white;

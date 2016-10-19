@@ -11,6 +11,7 @@
             <% if ("1".equals(error)) {%>
             alert("NIS yang anda masukkan salah");
             <%}%>
+            
         </script>
     </head>
     <body>
