@@ -16,6 +16,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -31,6 +32,7 @@ public class InputNilai extends HttpServlet {
         try {
             String idKelas = new DataSiswa().findIdKelas(nis);
             String kelas=String.valueOf(idKelas.charAt(0)) ;
+//            JOptionPane.showMessageDialog(null, idKelas);
 //            String idKelas = "7A";
             CheckInputNilai check = new CheckInputNilai();
             String[] code= {"a","b","c","d","e","f","g","h","i","j"};
@@ -49,7 +51,7 @@ public class InputNilai extends HttpServlet {
                         (request.getParameter(code[i]+"4")))==1) 
                     response.sendRedirect("Input.jsp?nis="+nis+"&error=1");
             }
-            int checkSemester = new DataNilai().checkSemester(nis, Integer.parseInt(semester));
+            int checkSemester = new DataNilai().checkSemester(nis, Integer.parseInt(semester),kelas);
             if (checkSemester==0) response.sendRedirect("Input.jsp?nis="+nis+"&error=3");
             else if (checkSemester==2) response.sendRedirect("Input.jsp?nis="+nis+"&error=2");
             //ipa
@@ -250,12 +252,33 @@ public class InputNilai extends HttpServlet {
                        new DataNilai().panggilNilaiSemesterDua(nis, kelas+"SEN"));
             
             }
-//            String[] mataPelajaranSemesterSatu= {};
-//            String[] mataPelajaranSemesterSatu
-            //bikin input nilai akhir
-            //if sm 1 berarti panggil panggilNilaiSemester1, hitung akhir (nilai1,nilai1)
-            //if sm 2 berarti panggil panggilNilaiSemester1 dan 2
-            
+            if (semester.equals("2")){
+                String[] daftarKode1 = {
+                    "7IPA", "7IPS", "7MTK", "7AGM", "7IND", "7ING", "7KWN", "7PJO", "7PRK", "7SEN"
+                };
+                String[] daftarKode2 = {
+                    "8IPA", "8IPS", "8MTK", "8AGM", "8IND", "8ING", "8KWN", "8PJO", "8PRK", "8SEN"
+                };
+                
+//                JOptionPane.showMessageDialog(null, "a");
+                int[] tempStatus = new int[10];
+                for (int i = 0; i < 10; i++) {
+                    if (kelas.equals("7")) {
+                        tempStatus[i] = new DataNilai().panggilStatusPerMapel(nis, daftarKode1[i], new DataNilai().panggilKKM(daftarKode1[i]));
+                    } else if (kelas.equals("8")) {
+                        tempStatus[i] = new DataNilai().panggilStatusPerMapel(nis, daftarKode2[i], new DataNilai().panggilKKM(daftarKode2[i]));
+                    }
+                }
+//                JOptionPane.showMessageDialog(null, "b");
+
+                int stat=new DataNilai().checkStatus(tempStatus);
+                if (stat == 1) {
+                    if (kelas.equals("7") || kelas.equals("8")) {
+                        new DataSiswa().updateKelas(nis, idKelas);
+//                        JOptionPane.showMessageDialog(null, "c");
+                    }
+                }
+            }
             response.sendRedirect("tampilNilai1.jsp?nis="+nis+"&semester="+semester);
         } catch (SQLException ex) {
             Logger.getLogger(InputNilai.class.getName()).log(Level.SEVERE, null, ex);

@@ -11,7 +11,23 @@ package Model;
  */
 public class Kelas {
     private String idKelas;
-    private String jumlahSiswa;
+    private int tahun_ajaran ;
+
+    public String getIdKelas() {
+        return idKelas;
+    }
+
+    public void setIdKelas(String idKelas) {
+        this.idKelas = idKelas;
+    }
+
+    public int getTahun_ajaran() {
+        return tahun_ajaran;
+    }
+
+    public void setTahun_ajaran(int tahun_ajaran) {
+        this.tahun_ajaran = tahun_ajaran;
+    }
     
     
 }

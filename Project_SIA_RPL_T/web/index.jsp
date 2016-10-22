@@ -13,13 +13,13 @@
             <header>
                 <font color = "black" size = "30">
                     <b>
-                        <center> SIA </center>
+                        <center> SISTEM INFORMASI AKADEMIK </center>
                     </b>
                 </font>
             </header>
         </center>
         <div class="header">
-            <center><img src="assets/images/12493668_1973758196181747_118703147933444765_o.jpg" width="950"; height="500";></center> 
+            <center><img src="assets/images/diknas.png" width="550"; height="500";></center> 
             
         </div>
         <div class="p1">

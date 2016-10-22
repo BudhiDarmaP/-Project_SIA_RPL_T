@@ -23,10 +23,7 @@ public class DataSiswa {
         ArrayList<Siswa> siswaList = new ArrayList<Siswa>();
         try {
             connection = database.getConnection();
-            statement = connection.prepareStatement("select nis, nama, tempat_tanggal_lahir,"
-                    + "alamat, id_kelas from siswa"
-                    //                    + "where alamat is not null and tempat_tanggal_lahir is not null;"
-                    + "");
+            statement = connection.prepareStatement("select * from siswa");
             resultSet = statement.executeQuery();
 
             while (resultSet.next()) {
@@ -88,18 +85,52 @@ public class DataSiswa {
         return key;
     }
     
-    public String findIdKelas(String key) throws SQLException{
+    public String findIdKelas(String nis) throws SQLException{
         connection = database.getConnection();
 //        PreparedStatement statement = connection.prepareStatement("select nis,id_kelas from siswa where nis = "+key);
 //        ResultSet resultSet = statement.executeQuery();
-        String hasil;
+//        String hasil;
         for (Siswa siswa : new DataSiswa().list()) {
-            if (siswa.getNis().equals(key)) {
+            if (siswa.getNis().equals(nis)) {
                 return siswa.getIdKelas();
             }
         }
-        return key;
+        return "tidak ditemukan";
     }
     
+    public void updateKelas(String nis,String id_kelas) throws SQLException{
+        int splitA=Integer.parseInt(String.valueOf(id_kelas.charAt(0)));
+        String splitB=String.valueOf(id_kelas.charAt(1));
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        ArrayList<Siswa> siswaList = new ArrayList<Siswa>();
+        try {
+            connection = database.getConnection();
+            statement = connection.prepareStatement("update siswa set id_kelas = '"  
+                    +(String.valueOf(splitA+1)+splitB) 
+                    + "' where nis= '" + nis + "'");
+            resultSet = statement.executeQuery();
+        } finally {
+            if (resultSet != null) {
+                try {
+                    resultSet.close();
+                } catch (SQLException ignore) {
+                }
+            }
+            if (statement != null) {
+                try {
+                    statement.close();
+                } catch (SQLException ignore) {
+                }
+            }
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException ignore) {
+                }
+            }
+        }
+    }
     
 }
+    
