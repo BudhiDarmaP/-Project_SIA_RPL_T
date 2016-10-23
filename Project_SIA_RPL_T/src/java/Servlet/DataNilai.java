@@ -159,15 +159,15 @@ public class DataNilai {
         return nilaiList;
     }
 
-    public int checkSemester(String nis, int semester,String kelas) throws SQLException {
+    public int checkSemester(String nis, int semester, String kelas) throws SQLException {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
-        String kode=kelas+"MTK";
+        String kode = kelas + "MTK";
         ArrayList<Nilai> nilaiList = new ArrayList<Nilai>();
         try {
             connection = database.getConnection();
             statement = connection.prepareStatement("select * from nilai "
-                    + "where nis = '" + nis +"' and "
+                    + "where nis = '" + nis + "' and "
                     + "kode = '" + kode
                     + "'");
             resultSet = statement.executeQuery();
@@ -223,14 +223,15 @@ public class DataNilai {
         }
         return 0;
     }
-    public boolean checkTabelIsEmpty(String nis) throws SQLException{
+
+    public boolean checkTabelIsEmpty(String nis) throws SQLException {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         ArrayList<Nilai> nilaiList = new ArrayList<Nilai>();
         try {
             connection = database.getConnection();
             statement = connection.prepareStatement("select * from nilai "
-                    + "where nis = '" + nis+"' " 
+                    + "where nis = '" + nis + "' "
                     + "and kode= '9IPA'");
             resultSet = statement.executeQuery();
 
@@ -267,7 +268,9 @@ public class DataNilai {
                 }
             }
         }
-        if (nilaiList.isEmpty())return true;
+        if (nilaiList.isEmpty()) {
+            return true;
+        }
         return false;
     }
 
@@ -418,7 +421,7 @@ public class DataNilai {
         ResultSet resultSet = null;
         try {
             double nilaiAkhir = (nilai1 + nilai2) / 2;
-            
+
             connection = database.getConnection();
             statement = connection.prepareStatement("update nilai set NILAI_AKHIR =" + nilaiAkhir + ""
                     + " where nis='" + nis + "' and semester=" + String.valueOf(semester) + " and kode='" + kode + "'");
@@ -567,8 +570,8 @@ public class DataNilai {
         }
         return 0;
     }
-    
-    public int checkStatus(int[] status){
+
+    public int checkStatus(int[] status) {
         int stat = 1;
         for (int i = 0; i < 10; i++) {
             if (status[i] == 4 || status[i] == 1) {
@@ -577,7 +580,8 @@ public class DataNilai {
         }
         return stat;
     }
-    public double panggilNilaiAkhir(String nis, String kode) throws SQLException{
+
+    public double panggilNilaiAkhir(String nis, String kode) throws SQLException {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         ArrayList<Nilai> nilaiList = new ArrayList<Nilai>();
@@ -621,15 +625,11 @@ public class DataNilai {
                 }
             }
         }
-        for (Nilai nilai : nilaiList){
-            if (nilai.getKode().equals(kode)&&nilai.getSemester()==2) {
+        for (Nilai nilai : nilaiList) {
+            if (nilai.getKode().equals(kode) && nilai.getSemester() == 2) {
                 return nilai.getNilaiAkhir();
             }
         }
         return 0;
-    }
-
-    public int panggilStatus(String string, String ipa, int i) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

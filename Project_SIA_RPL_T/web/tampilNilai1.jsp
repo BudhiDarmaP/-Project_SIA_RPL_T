@@ -77,7 +77,7 @@
                                 "Ilmu Pengetahuan Alam","Ilmu Pengetahuan Sosial",
                                 "Matematika","Agama dan Budi Pekerti",
                                 "Bahasa Indonesia","Bahasa Inggris",
-                                "Pancasila dan Kewarganegaraan","Pendidikan Jasmani dan Kesehatan",
+                                "Pancasila & Kewarganegaraan","Pendidikan Jasmani & Kesehatan",
                                 "Prakarya","Seni Budaya"
                             };
                             String[] daftarKode1 = {
@@ -92,17 +92,17 @@
                             String idkelas= new DataSiswa().findIdKelas(nis);
                             String kelas=String.valueOf(idkelas.charAt(0)) ;
                             String[] daftarKelas=new String[daftarMataPelajaran.length];
-                            if (kelas.equals("7")){
+                            if ((Integer.parseInt(kelas)-1)==7||Integer.parseInt(kelas)==7){
                                 for (int i=0;i<daftarKelas.length;i++){
                                     daftarKelas[i]=daftarKode1[i];
                                 }
                             }
-                            else if (kelas.equals("8")){
+                            else if (Integer.parseInt(kelas)==9&&new DataNilai().checkTabelIsEmpty(nis)){
                                 for (int i=0;i<daftarKelas.length;i++){
                                     daftarKelas[i]=daftarKode2[i];
                                 }
                             }
-                            else if (kelas.equals("9")){
+                            else if (Integer.parseInt(kelas)==9&&!new DataNilai().checkTabelIsEmpty(nis)){
                                 for (int i=0;i<daftarKelas.length;i++){
                                     daftarKelas[i]=daftarKode3[i];
                                 }
