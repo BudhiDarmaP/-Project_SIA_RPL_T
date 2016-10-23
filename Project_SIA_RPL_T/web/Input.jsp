@@ -27,10 +27,10 @@
     </head>
     <body>
         <%
-        DatabaseConnection database = new DatabaseConnection();
-        Connection connection = database.getConnection();
-        String nis = request.getParameter("nis");
-        
+            DatabaseConnection database = new DatabaseConnection();
+            Connection connection = database.getConnection();
+            String nis = request.getParameter("nis");
+
         %>
         <div id="c1"></div>
         <div id="c2"></div>
@@ -52,7 +52,7 @@
                             </td>
                             <td>
                                 <%//panggil NIS
-                                out.print(nis);
+                                    out.print(nis);
                                 %>
                                 <input type="hidden" name="nis" value="<%=nis%>">
                             </td>
@@ -66,7 +66,7 @@
                             </td>
                             <td>
                                 <%//panggil nama siswa
-                                out.print(new DataSiswa().findNama(nis));
+                                    out.print(new DataSiswa().findNama(nis));
                                 %>
                             </td>
                         </tr>
@@ -267,7 +267,11 @@
                     <input type="submit" value="Simpan">
                 </form>
             </div>
-
+                <table style="align-content: center">                 
+                    <form action="menu.jsp" method="">
+                        <input type="submit" value="Back">
+                    </form>
+                </table>
         </div>
     </body>
 </html>
