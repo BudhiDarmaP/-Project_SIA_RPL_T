@@ -9,24 +9,28 @@
         <link href="assets/css/style-home.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        <center>    
-            <header>
-                <font color = "black" size = "30">
-                    <b>
-                        <center> SISTEM INFORMASI AKADEMIK </center>
-                    </b>
-                </font>
-            </header>
+    <center>    
+        <header>
+            <font color = "black" size = "30">
+            <b>
+                <center> SISTEM INFORMASI AKADEMIK </center>
+            </b>
+            </font>
+        </header>
+    </center>
+    <div class="header">
+        <center><img src="assets/images/diknas.png" width="550"; height="500";></center> 
+
+    </div>
+    <div>
+        <p style="align-content: center">
+        <center>
+            <form action="menu.jsp">
+                <input type="submit" value="MASUK" style="font-size: 25"> 
+                <!--<a href="menu.jsp"><font color="blue">MASUK</font></a>-->
+            </form>
         </center>
-        <div class="header">
-            <center><img src="assets/images/diknas.png" width="550"; height="500";></center> 
-            
-        </div>
-        <div class="p1">
-            <a href="menu.jsp"><font color="blue">MASUK</font></a>
-            
-        </div>
-        
-        
-    </body>
+    </p>
+</div>
+</body>
 </html>
