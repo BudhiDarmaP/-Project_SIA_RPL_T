@@ -28,8 +28,8 @@
                 <br>
                 Silahkan Masukkan NIS : 
                 <br>
-                <input type="text" name="nis" value="" size="5">
-                <input type="submit" value="Cari"> 
+                <input type="text" name="nis" value="" size="5" style="font-size: 17">
+                <input type="submit" value="Cari" style="font-size: 17"> 
                 <p></p> 
             </form>
         </div>
