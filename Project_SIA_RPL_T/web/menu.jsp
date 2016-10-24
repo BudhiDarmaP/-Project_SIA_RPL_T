@@ -25,17 +25,21 @@
         <div id="form">
             <div id="form-menu">
                 <br>
-                Memasukkan Nilai Siswa
+                <p style="font-size: 25; font-family: britanic; font-style: bold">
+                    Memasukkan Nilai Siswa</p>
                 <form action="awal.jsp">
                     <br>
-                    <input type="submit" value="Nilai Siswa">
+                    <input type="submit" value="Nilai Siswa" 
+                           style="font-size: 20; font-family: britanic; font-style: bold">
                 </form>
                 ------------------------------------------------------
                 <br>
-                Melihat Rekap Siswa
+                <p style="font-size: 25; font-family: britanic; font-style: bold">                
+                    Melihat Rekap Siswa</p>
                 <form action="awal2.jsp">
                     <br>
-                    <input type="submit" value="Rekap Siswa">
+                    <input type="submit" value="Rekap Siswa" 
+                           style="font-size: 20; font-family: britanic; font-style: bold">
                 </form>
             </div>
         </div>
